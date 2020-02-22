@@ -1,22 +1,13 @@
 <template>
-  <div id='app'>
+  <div id="app">
     <Navbar />
     <router-view />
   </div>
 </template>
 
-<script>
-import Navbar from '@/components/Navbar'
-
-export default {
-  name: 'App',
-  components: { Navbar }
-}
-</script>
-
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -24,9 +15,21 @@ export default {
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(48, 54, 73);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(48, 54, 73);
 }
 </style>
+
+<script>
+import Navbar from "@/components/navbar/Navbar";
+
+export default {
+  name: "App",
+  components: { Navbar },
+};
+</script>

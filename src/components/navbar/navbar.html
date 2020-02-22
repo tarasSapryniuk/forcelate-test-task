@@ -1,0 +1,14 @@
+<header>
+  <router-link class="logo" :to="'/'"><h2>Forcelate Test Task</h2></router-link>
+  <nav>
+    <ul class="nav__links">
+      <li v-for="item in nav_items"><router-link :to="item.address">{{item.value}}</router-link></li>
+    </ul>
+  </nav>
+  <router-link :to="'/profile'"
+    ><v-icon class="user-icon" name="user"
+  /></router-link>
+  <router-link class="sign-out" :to="'/sign-out'"
+    ><button>LogOut <v-icon name="sign-out-alt" /></button
+  ></router-link>
+</header>

@@ -1,18 +1,7 @@
-<template>
-  <div class="container">
-    <div class="wrapper">
-      <div class="item item-dashboard">Hello</div>
-      <div class="item">World</div>
-      <div class="item">!!!</div>
-    </div>
-  </div>
-</template>
-
-<style scoped>
 .container {
   display: flex;
   justify-content: space-between;
-  padding: 20px 10%;
+  padding: 20px 3%;
 }
 
 .wrapper {
@@ -22,14 +11,20 @@
   grid-auto-rows: minmax(100px, auto);
 }
 
-.item {
-  background-color: #edf0f1;
-  border-radius: 10px;
-  box-shadow: 3px 3px 3px 1px rgba(140, 140, 153, 0.6);
+.box {
+  background-color: #f8f6ff;
   margin: 0px 0px 15px 0px;
+} 
+
+.rounded {
+  border-radius: 10px;
 }
 
-.item:not(:first-child) {
+.shadow {
+  box-shadow: 3px 3px 3px 1px rgba(140, 140, 153, 0.6);
+}
+
+.box:not(:first-child) {
   margin: 0px 0px 15px 15px;
 }
 
@@ -37,4 +32,3 @@
   grid-row-start: 1;
   grid-row-end: 3;
 }
-</style>

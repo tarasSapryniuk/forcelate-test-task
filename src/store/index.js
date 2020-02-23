@@ -5,48 +5,64 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   actions: {
-    async fetchCurrensy(ctx, currency = "USDC_BTC") {
-        const result = await fetch("https://poloniex.com/public?command=returnTradeHistory&currencyPair=" + currency);
-        const currencies = await result.json();
-  
-        const buy = currencies.find(element => element.type === "buy");
-        const sell = currencies.find(element => element.type === "sell");
+    async fetchTrades(ctx, currency = "USDC_BTC") {
+      const result = await fetch(
+        "https://poloniex.com/public?command=returnTradeHistory&currencyPair=" +
+          currency
+      );
+      const trades = await result.json();
 
-        ctx.commit("updateCurrencies", [
-            {
-                buy_exchange_pair: "HITBTC/IOTA-USD",
-                sell_exchange: "BINANCE/IOTA-USDT",
-                buy: (+buy.rate).toFixed(3),
-                sell: (+buy.rate + +buy.amount).toFixed(3),
-                trade_amount: (+buy.total).toFixed(4),
-                arb: "1.01%[0.15%]",
-                exp_profit: 1,
-                exp_fees: 0.2
-            },
-            {
-                buy_exchange_pair: "BITFINEX/ZEC-USD",
-                sell_exchange: "KRAKEN/ZEC-USD",
-                buy: (+sell.rate).toFixed(3),
-                sell: (+sell.rate + +sell.amount).toFixed(3),
-                trade_amount: (+sell.total).toFixed(4),
-                arb: "0.27%[0.15%]",
-                exp_profit: 0.2,
-                exp_fees: 0.2
-              }
-        ]);
-      }
+      ctx.commit("updateTrades", trades.slice(0, 10));
+      ctx.commit("updateCurrency", currency);
+    },
+
+    async fetchCurrensies(ctx) {
+      const result = await fetch(
+        "https://poloniex.com/public?command=returnTicker"
+      );
+      const currencies = await result.json();
+
+      ctx.commit("updateCurrencie", Object.keys(currencies));
+    }
   },
   mutations: {
-    updateCurrencies(state, currencies) {
-      state.currencies = currencies;
+    updateTrades(state, trades) {
+      const new_trades = [];
+      trades.forEach(element => {
+        new_trades.push({
+          buy: (+element.rate).toFixed(3),
+          sell: (+element.rate + +element.amount).toFixed(3),
+          trade_amount: (+element.total).toFixed(4),
+          arb: (+element.amount).toFixed(5)
+        });
+      });
+      state.trades = new_trades;
+    },
+
+    updateCurrencie(state, currencies) {
+      state.currencies = currencies
+        .filter(cur => cur.includes("BTC"))
+        .slice(1, 11);
+    },
+
+    updateCurrency(state, currency) {
+      state._currency = currency;
     }
   },
   getters: {
-    selectedCurrencies(state) {
+    allTrades(state) {
+      return state.trades;
+    },
+    allCurrencies(state) {
       return state.currencies;
+    },
+    currency(state) {
+      return state._currency;
     }
   },
   state: {
-    currencies: []
+    trades: [],
+    currencies: [],
+    _currency: ""
   }
 });

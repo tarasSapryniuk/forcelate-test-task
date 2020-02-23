@@ -1,0 +1,26 @@
+h2 {
+  padding: 10px 0;
+}
+
+h4 {
+  text-align: center;
+  padding: 15px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+}
+
+.grid div {
+  padding: 0 10px 10px 10px;
+}
+
+.grid div:not(:last-child) {
+  border-right: 2px solid green;
+}
+
+span {
+  font-size: 13px;
+  text-align: center;
+}

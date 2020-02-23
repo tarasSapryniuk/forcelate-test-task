@@ -1,8 +1,8 @@
 <header>
-  <router-link class="logo" :to="'/'"><h2>Forcelate Test Task</h2></router-link>
+  <router-link class="logo" :to="'/'"><h2>{{logo}}</h2></router-link>
   <nav>
     <ul class="nav__links">
-      <li v-for="item in nav_items"><router-link :to="item.address">{{item.value}}</router-link></li>
+      <li v-for="item in nav_items"><router-link :to="item.address">{{item.value | toUpperCase }}</router-link></li>
     </ul>
   </nav>
   <router-link :to="'/profile'"

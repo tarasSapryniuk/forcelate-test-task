@@ -16,8 +16,21 @@
   margin: 0px 0px 15px 0px;
 } 
 
+.flex-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
 .rounded {
   border-radius: 10px;
+}
+
+.p-5 {
+  padding: 1em;
+}
+
+.left {
+  text-align: left;
 }
 
 .shadow {
@@ -30,5 +43,5 @@
 
 .item-dashboard {
   grid-row-start: 1;
-  grid-row-end: 3;
+  grid-row-end: 4;
 }

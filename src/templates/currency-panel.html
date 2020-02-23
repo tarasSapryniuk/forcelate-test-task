@@ -1,0 +1,26 @@
+<div>
+  <h2>Dashboard profit currency</h2>
+  <div class="grid">
+    <div>
+      <span class="dropdown-el">
+        <template v-for="cur in allCurrencies">
+          <input
+            :checked="cur === 'USDT_BTC'"
+            type="radio"
+            name="currency"
+            v-text="cur"
+            :id="cur"
+          />
+          <label :for="cur" v-on:click="handleClick(cur)"
+            >{{cur|removePeriods}}</label
+          >
+        </template>
+      </span>
+    </div>
+    <div>
+      <span class="desc"
+        >Selected currency will affect all prifit in dashboard</span
+      >
+    </div>
+  </div>
+</div>

@@ -26,7 +26,7 @@ body {
 </style>
 
 <script>
-import Navbar from "@/components/navbar/Navbar";
+import Navbar from "@/router/layout/navbar/Navbar";
 
 export default {
   name: "App",

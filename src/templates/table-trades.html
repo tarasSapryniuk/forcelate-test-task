@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th
+        v-for="header in headers"
+        v-html="header.includes('<br>') ? header + $options.filters.removePeriods(currency) : header"
+      ></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- I didn't find the API where was all the information needed for the table.  -->
+    <tr v-for="(trade, index) of allTrades">
+      <td class="green">
+        {{items[index%2].buy_exchange_pair + currency | removePeriods}}
+      </td>
+      <td>{{trade.buy}}</td>
+      <td class="red">
+        {{items[index%2].sell_exchange + currency | removePeriods}}
+      </td>
+      <td>{{trade.sell}}</td>
+      <td>{{trade.trade_amount}}</td>
+      <td>{{trade.arb}}%[0.15%]</td>
+      <td>{{items[index%2].exp_profit}}</td>
+      <td>{{items[index%2].exp_fees}}</td>
+      <td><img src="@/assets/adj.svg" height="22" alt="adj." /></td>
+    </tr>
+  </tbody>
+</table>

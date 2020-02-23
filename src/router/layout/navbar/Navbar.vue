@@ -5,6 +5,7 @@
 export default {
   data() {
     return {
+      logo: "Forcelate Test Task",
       nav_items: [
         { value: "Dashboard", address: "/dashboard" },
         { value: "Instances", address: "/instances" },
@@ -14,6 +15,11 @@ export default {
         { value: "Contact", address: "/contact" }
       ]
     };
+  },
+  filters: {
+    toUpperCase(value) {
+      return value.toUpperCase();
+    }
   }
 };
 </script>

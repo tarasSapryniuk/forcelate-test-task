@@ -1,0 +1,115 @@
+.dropdown-el {
+  max-width: 6em;
+  position: absolute;
+  display: inline-block;
+  margin-right: 1em;
+  min-height: 2.5em;
+  max-height: 2.5em;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  color: #fff;
+  outline: none;
+  border: 0.06em solid transparent;
+  border-radius: 10px;
+  background-color: rgba(100, 111, 142, 1);
+  transition: 0.3s all ease-in-out;
+}
+
+.dropdown-el input:focus + label {
+  background: #def;
+}
+
+.dropdown-el input {
+  width: 1px;
+  height: 1px;
+  display: inline-block;
+  position: absolute;
+  opacity: 0.01;
+}
+
+.dropdown-el label {
+  border-top: 0.06em solid #d9d9d9;
+  display: block;
+  height: 2.5em;
+  line-height: 2.5em;
+  padding-left: 1em;
+  padding-right: 3em;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s color ease-in-out;
+}
+
+.dropdown-el label:nth-child(2) {
+  margin-top: 2.5em;
+  border-top: 0.06em solid #d9d9d9;
+}
+
+.dropdown-el input:checked + label {
+  display: block;
+  border-top: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.dropdown-el input:checked + label:nth-child(2) {
+  margin-top: 0;
+  position: relative;
+}
+
+.dropdown-el::after {
+  content: "";
+  position: absolute;
+  right: 0.8em;
+  top: 1.09em;
+  border: 0.3em solid #fff;
+  border-color: #fff transparent transparent transparent;
+  transition: 0.4s all ease-in-out;
+}
+
+.dropdown-el.expanded {
+  border: 0.06em solid rgba(100, 111, 142, 1);
+  background: #fff;
+  color: #000;
+  border-radius: 0.25em;
+  padding: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 5px 0px;
+  max-height: 25em;
+}
+
+.dropdown-el.expanded label {
+  border-top: 0.06em solid #d9d9d9;
+}
+
+.dropdown-el.expanded label:hover {
+  color: rgba(100, 111, 142, 1);
+}
+
+.dropdown-el.expanded input:checked + label {
+  color: rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-el.expanded::after {
+  transform: rotate(-180deg);
+  top: 0.8em;
+  border-color: rgba(0, 0, 0, 0.1) transparent transparent transparent;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin-bottom: 14px;
+}
+
+.desc {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.001em;
+}
+
+h2 {
+  padding: 10px 0;
+}
